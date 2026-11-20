@@ -316,7 +316,6 @@ setmetatable(UltsLib, {
 			local PageCorner = Instance.new("UICorner")
 			PageCorner.Parent = Page
 
-			-- Margem interna para os botões não encostarem na borda
 			local PagePadding = Instance.new("UIPadding")
 			PagePadding.PaddingTop = UDim.new(0, 8)
 			PagePadding.PaddingBottom = UDim.new(0, 8)
@@ -324,9 +323,10 @@ setmetatable(UltsLib, {
 			PagePadding.PaddingRight = UDim.new(0, 8)
 			PagePadding.Parent = Page
 
-			local PageLayout = Instance.new("UIListPageLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-PageLayout.HorizontalFlex = Enum.UIFlexAlignment.Fill
-PageLayout.Padding = UDim.new(0, 8)
+			local PageLayout = Instance.new("UIListLayout")
+			PageLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+			PageLayout.HorizontalFlex = Enum.UIFlexAlignment.Fill
+			PageLayout.Padding = UDim.new(0, 8)
 PageLayout.SortOrder = Enum.SortOrder.LayoutOrder
 PageLayout.Parent = Page
 if firstTab then firstTab = false end
@@ -378,7 +378,6 @@ ToggleBtn.Parent = targetPage
 if followTheme then table.insert(ThemedElements, ToggleBtn) end
 local UICorner = Instance.new("UICorner")
 UICorner.Parent = ToggleBtn
--- Quadradinho indicador (Vermelho = OFF, Verde = ON)
 local Indicator = Instance.new("Frame")
 Indicator.Name = "Status"
 Indicator.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
@@ -420,7 +419,7 @@ if enterPressed then
 callback(Box.Text)
 end
 end)
--- 8. CRIAR LABEL (TEXTO/TÍTULO DE SEÇÃO): UltsLib(Label, "Texto", "Tab", true)
+-- 8. CRIAR LABEL: UltsLib(Label, "Texto", "Tab", true)
 elseif cmd == "label" then
 local targetPage = CreatedTabs[tostring(arg2)]
 if not targetPage then return warn("UltsLib: Tab '" .. tostring(arg2) .. "' não encontrada!") end
@@ -442,4 +441,4 @@ UICorner.Parent = Lbl
 end
 end
 })
-return UltsLibLayout")
+return UltsLib
